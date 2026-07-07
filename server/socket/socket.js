@@ -10,7 +10,10 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: process.env.CLIENT_URL,
+    origin: [
+      process.env.CLIENT_URL,
+      "https://chat-app-mern-full-stack-project-2-1smpr3qba.vercel.app",
+    ],
   },
 });
 
