@@ -10,7 +10,7 @@ app.use(cookieParser());
 
 app.use( // cross server use karne ke liye (ex: frontend, backend)
   cors({
-    origin: [process.env.CLIENT_URL],
+    origin: [process.env.CLIENT_URL,"https://taupe-souffle-3f79f6.netlify.app/"],
     credentials: true,
   }),
 );
