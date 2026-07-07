@@ -10,7 +10,7 @@ app.use(cookieParser());
 
 app.use( // cross server use karne ke liye (ex: frontend, backend)
   cors({
-    origin: [process.env.CLIENT_URL,"https://chat-app-mern-full-stack-project-2-1smpr3qba.vercel.app"],
+    origin: [process.env.CLIENT_URL,"https://chat-app-mern-full-stack-project-2.vercel.app"],
     credentials: true,
   }),
 );
