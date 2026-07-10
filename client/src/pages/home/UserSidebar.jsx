@@ -32,7 +32,7 @@ const UserSidebar = () => {
       setUsers(otherUsersProfile);
     } else {
       setUsers(
-        otherUsersProfile?.filter((el) => {
+        otherUsersProfile.filter((el) => {
           return (
             el.fullName.toLowerCase().includes(searchedUser.toLowerCase()) ||
             el.username.toLowerCase().includes(searchedUser.toLowerCase())
