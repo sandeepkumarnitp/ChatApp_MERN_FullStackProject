@@ -19,7 +19,6 @@ export const register = asyncHandler(async (req, res, next) => {
   const hashedPassword = await bcrypt.hash(password, 10);
 
   // generating avatar
-  
   const avatar = `https://ui-avatars.com/api/?name=${fullName}`;
 
   // creating new user
