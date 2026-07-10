@@ -9,13 +9,12 @@ import { Toaster } from "react-hot-toast";
 
 const App = () => {
   const dispatch = useDispatch();
-  const [isAuthenticated] = useSelector(state=>state.userReducer);
 
   useEffect(() => {
     (async () => {
       const response = await dispatch(getUserProfileThunk());
     })();
-  }, [isAuthenticated]);
+  }, []);
 
   return (
     <>
