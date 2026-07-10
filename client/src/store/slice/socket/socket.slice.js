@@ -25,7 +25,6 @@ export const socketSlice = createSlice({
   },
 });
 
-// Action creators are generated for each case reducer function
 export const { initializeSocket, setOnlineUsers } = socketSlice.actions;
 
 export default socketSlice.reducer;
