@@ -45,7 +45,7 @@ export const register = asyncHandler(async (req, res, next) => {
         Date.now() + process.env.COOKIES_EXPIRES * 24 * 60 * 60 * 1000,
       ),
       httpOnly: true,
-      secure: true,
+      secure: process.env.NODE_ENV === "production",
       sameSite: "None",
     })
     .json({
@@ -85,7 +85,7 @@ export const login = asyncHandler(async (req, res, next) => {
   };
 
   const token = jwt.sign(tokenData, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES,
+    expiresIn: "7d",
   });
 
   res
@@ -95,7 +95,7 @@ export const login = asyncHandler(async (req, res, next) => {
         Date.now() + process.env.COOKIES_EXPIRES * 24 * 60 * 60 * 1000,
       ),
       httpOnly: true,
-      secure: true,
+      secure: process.env.NODE_ENV === "production",
       sameSite: "None",
     })
     .json({
