@@ -7,38 +7,15 @@ import {
   getOtherUserProfileThunk,
   getUserProfileThunk,
   logoutUserThunk,
-} from "../../store/slice/user/user.thunk";
+} from "../../store/slice/user/user.thunk.js";
 
 const UserSidebar = () => {
-  // const [otherUsers, setOtherUsers] = useState([]);
-  // const [loggedInUser, setLoggedInUser] = useState({});
-  // const dispatch = useDispatch();
-
-  // // get LoggedIn User
-  // useEffect(() => {
-  //   (async()=>{
-  //     const response = await dispatch(getUserProfileThunk())
-  //     const currentUser = response.payload.responseData.profile;
-  //     setLoggedInUser(currentUser);
-  //   })()
-  // }, []);
-
-  // // get other users
-  // useEffect(() => {
-  //   (async()=>{
-  //     const response = await dispatch(getOtherUserProfileThunk())
-  //     const allOtherUsers = response.payload.responseData.otherUsers
-  //     setOtherUsers(allOtherUsers);
-  //   })()
-  // }, []);
-
   const [searchedUser, setSearchedUser] = useState("");
   const [users, setUsers] = useState([]);
 
   const dispatch = useDispatch();
-  const { isAuthenticated ,userProfile, otherUsersProfile, screenLoading } = useSelector(
-    (state) => state.userReducer,
-  );
+  const { isAuthenticated, userProfile, otherUsersProfile, screenLoading } =
+    useSelector((state) => state.userReducer);
 
   const handleLogout = async () => {
     await dispatch(logoutUserThunk());
@@ -47,7 +24,6 @@ const UserSidebar = () => {
   useEffect(() => {
     (async () => {
       const response = await dispatch(getOtherUserProfileThunk());
-      // console.log(response.payload.responseData.otherUsers)
     })();
   }, [isAuthenticated]);
 
@@ -56,7 +32,7 @@ const UserSidebar = () => {
       setUsers(otherUsersProfile);
     } else {
       setUsers(
-        otherUsersProfile.filter((el) => {
+        otherUsersProfile?.filter((el) => {
           return (
             el.fullName.toLowerCase().includes(searchedUser.toLowerCase()) ||
             el.username.toLowerCase().includes(searchedUser.toLowerCase())
@@ -64,7 +40,7 @@ const UserSidebar = () => {
         }),
       );
     }
-  }, [searchedUser,screenLoading,otherUsersProfile]);
+  }, [searchedUser, screenLoading, otherUsersProfile]);
 
   return (
     <div className="w-full sm:max-w-[35%] lg:max-w-[30%] h-screen bg-base-300 p-3 flex flex-col gap-2 border-r border-r-white/20 ">
