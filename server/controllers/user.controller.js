@@ -35,17 +35,17 @@ export const register = asyncHandler(async (req, res, next) => {
   };
 
   const token = jwt.sign(tokenData, process.env.JWT_SECRET, {
-    expiresIn: "7d" ,
+    expiresIn: "7d",
   });
 
   res
     .status(200)
     .cookie("token", token, {
       expires: new Date(
-        Date.now() + process.env.COOKIES_EXPIRES * 24 * 60 * 60 * 1000,
+        Date.now() + Number(process.env.COOKIES_EXPIRES) * 24 * 60 * 60 * 1000,
       ),
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: true,
       sameSite: "None",
     })
     .json({
@@ -92,10 +92,10 @@ export const login = asyncHandler(async (req, res, next) => {
     .status(200)
     .cookie("token", token, {
       expires: new Date(
-        Date.now() + process.env.COOKIES_EXPIRES * 24 * 60 * 60 * 1000,
+        Date.now() + Number(process.env.COOKIES_EXPIRES) * 24 * 60 * 60 * 1000,
       ),
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: true,
       sameSite: "None",
     })
     .json({
