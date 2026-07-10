@@ -8,9 +8,10 @@ connectDB();
 import cookieParser from "cookie-parser"; // cookies se aa rahe data ko parse karne e liye
 app.use(cookieParser());
 
-app.use( // cross server use karne ke liye (ex: frontend, backend)
+app.use(
+  // cross server use karne ke liye (ex: frontend, backend)
   cors({
-    origin: [process.env.CLIENT_URL,"https://chat-app-mern-full-stack-project-2.vercel.app"],
+    origin: [process.env.CLIENT_URL],
     credentials: true,
   }),
 );

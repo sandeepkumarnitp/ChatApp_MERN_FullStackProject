@@ -1,5 +1,8 @@
-# .ignore.node_module.directory
-node_module
-
-# .ignore.env.files
+node_modules
 .env
+logs
+*.log
+uploads/
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
