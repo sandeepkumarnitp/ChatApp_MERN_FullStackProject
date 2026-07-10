@@ -35,7 +35,7 @@ export const register = asyncHandler(async (req, res, next) => {
   };
 
   const token = jwt.sign(tokenData, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES,
+    expiresIn: "7d" ,
   });
 
   res
