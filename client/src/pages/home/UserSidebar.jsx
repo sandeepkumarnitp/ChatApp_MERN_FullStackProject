@@ -19,6 +19,7 @@ const UserSidebar = () => {
 
   const handleLogout = async () => {
     await dispatch(logoutUserThunk());
+    navigate("/login");
   };
 
   useEffect(() => {
